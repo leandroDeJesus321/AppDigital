@@ -9,7 +9,7 @@ export default function RootLayout() {
       <Text style={styles.texto} >Bem-vindo!</Text>
       <Text>Este APP é movido a dor, ódio, caos e loucura</Text>
       <StatusBar style="auto"/>
-      <Link href="/profile"  style={{color: 'blue'}}>Ir para o perfil</Link>
+      <Link href="/perfil"  style={{color: 'blue'}}>Ir para o perfil</Link>
     </View>
   );
 }

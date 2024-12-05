@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const AuthLayout = () => {
+const favoritos = () => {
   return (
     <View>
-      <Text>AuthLayout</Text>
+      <Text>favoritos</Text>
     </View>
   )
 }
 
-export default AuthLayout
+export default favoritos
 
 const styles = StyleSheet.create({})

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Navigator } from 'expo-router'
 
-const profile = () => {
+const perfil = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Perfil</Text>
@@ -11,7 +11,7 @@ const profile = () => {
   )
 }
 
-export default profile
+export default perfil
 
 const styles = StyleSheet.create({
     container:{
