@@ -23,21 +23,22 @@ const TabIcon = ({icon, color, name, focused}) =>{
 const TabsLayout = () => {
   return (
     <>
-    <Tabs
+    <Tabs 
     screenOptions={{
       tabBarShowLabel: false,
       tabBarActiveTintColor: '#FFA001',
       tabBArInactiveTinColor: '#CDCDE0',
       tabBarStyle:{
-        background: '#161622',
+        backgroundColor: '#161622',
         borderTopWidth: 1,
         borderTopColor: '#232533',
-        height: 84,
+        height: 60,
+        
       }
     }}
     >
       {/* Tabela do botão de home page */}
-      <Tabs.Screen 
+       <Tabs.Screen 
         name='home' 
         options={{
           title: "Home", 
@@ -81,14 +82,17 @@ export default TabsLayout
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
   },
   images:{
     width: 25,
     height: 25,
   },
   Text:{
-    fontSize: 10,
-  }
+    fontSize: 9,
+    textAlign: 'center',
+    color: 'white',
+  },
 
 })
