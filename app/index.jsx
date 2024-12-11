@@ -1,6 +1,10 @@
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {images} from '../constants';
+import CustomButton from "../components/CustomButton";
+import { StatusBar } from "expo-status-bar";
+import { Redirect, router } from "expo-router";
+
 
 export default function RootLayout() {
 
@@ -27,8 +31,20 @@ export default function RootLayout() {
               style={styles.icone2}
             />
           </View>
+          <Text style={styles.fonte2}>
+            Encontros criativos e inovadores: Embarque em uma jornada ilimitada de exploração com Aora.
+          </Text>
+          <CustomButton
+            title="login com email"      
+            handlePress ={()=>{router.push('/login')}}
+          />
         </View>
       </ScrollView>
+
+      <StatusBar
+        backgroundColor="#161622"
+        style="light"
+      />
     </SafeAreaView>
   );
 }
@@ -55,8 +71,8 @@ const styles = StyleSheet.create({
     width: 136,
     height: 15,
     position: 'absolute',
-    top: 10,
-    right: 8,
+    top: 20,
+    right: -50,
     resizeMode: 'contain'
     
   },
@@ -67,7 +83,13 @@ const styles = StyleSheet.create({
   },
   fonte:{
     fontFamily: 'ShareTechMono-Regular',
-    color: 'white'
+    color: 'white',
+  },
+  fonte2:{
+    fontFamily: 'ShareTechMono-Regular',
+    color: 'white',
+    margin: 20,
+    
   },
   textoForte:{
     color: 'white',
