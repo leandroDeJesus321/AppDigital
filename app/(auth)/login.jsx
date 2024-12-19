@@ -5,19 +5,46 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import {images} from '../../constants';
 import Formulario from '../../components/Formulario';
 import CustomButton from '../../components/CustomButton';
+import { Link } from 'expo-router';
+import { getCurrentUser, loginFuncao } from '../../libs/appwrite';
+import { router } from 'expo-router';
+import { useGlobalContext } from '../../context/GlobalProvider';
+
 
 const login = () => {
 
+  const [isSubmitting, setSubmitting] = useState(false);
+  const { setUser, setIsLogged } = useGlobalContext();
   const [form, setform] = useState({
     email: '',
     senha: '',
   })
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submit = async () =>{
+      if(form.email === "" || form.senha === ""){
+        alert('Error, preencha todos os campos.')
 
-  const submit = () =>{
+      }
+  
+      setSubmitting(true);
+  
+      try {
+        console.log('Login, Email:',form.email,' Senha:',form.senha)
+        await loginFuncao(form.email, form.senha);
+        const result = await getCurrentUser();
+        setUser(result);
+        setIsLogged(true);
 
-  }
+        alert("Login realizado com sucesso!");
+        router.replace('/home')
+      } catch (error) {
+        Alert.alert('Error', error.message)
+      } finally{
+        setSubmitting(false)
+      }
+  
+      
+    }
 
 
   return (
@@ -58,6 +85,7 @@ const login = () => {
             <Text style={styles.font}>
               Não está registrado?
             </Text>
+            <Link style={styles.link} href={'/cadastro'} >Cadastrar</Link>
           </View>
         </View>
       </ScrollView>
@@ -70,11 +98,13 @@ export default login
 const styles = StyleSheet.create({
   main:{
     backgroundColor: 'black',
-    flex: 1
+    height: '100%',
+    justifyContent: 'center',
+    alignItems:'center'
   },
   container:{
     width: '100%',
-    height: '85%',
+    height: '100%',
     justifyContent: 'center',
     paddingHorizontal: 16,
     marginVertical: 24,
@@ -100,6 +130,11 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     flexDirection: 'row',
     gap: 20,
+  },
+  link:{
+    color: 'orange',
+    fontSize: 14,
+    fontWeight: 'semibold'
   }
 
 })
