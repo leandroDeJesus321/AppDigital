@@ -31,7 +31,9 @@ const cadastro = () => {
     setIsSubmitting(true);
 
     try {
+      console.log("Envio de login: ",form);
       const result = await createUser(form.email, form.senha, form.username);
+      console.log("Resultado da sessão logada:",result)
       setUser(result);
       setIsLogged(true);
       router.replace('/home')

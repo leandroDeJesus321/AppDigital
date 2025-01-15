@@ -29,14 +29,14 @@ const login = () => {
       setSubmitting(true);
   
       try {
+        router.replace('/home')
         console.log('Login, Email:',form.email,' Senha:',form.senha)
         await loginFuncao(form.email, form.senha);
         const result = await getCurrentUser();
         setUser(result);
         setIsLogged(true);
-
+        
         alert("Login realizado com sucesso!");
-        router.replace('/home')
       } catch (error) {
         Alert.alert('Error', error.message)
       } finally{

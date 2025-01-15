@@ -73,6 +73,7 @@ export const loginFuncao = async (email, password)=>{
     }
 }
 
+// Pegar usuário atual
 export const getCurrentUser = async () =>{
     try {
 
@@ -94,6 +95,19 @@ export const getCurrentUser = async () =>{
     }
 }
 
+// Pegar todos os vídeos online
+export const recuperarTodosPosts = async () =>{
+    try {
+        const posts = await databases.listDocuments(
+            config.databaseId,
+            config.videoColletionId
+        )
+
+        return posts.documents;
+    } catch (error) {
+        throw Error(error)
+    }
+}
 
 
 
